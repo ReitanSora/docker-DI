@@ -6,7 +6,7 @@ docker-CI
 .
 |   .env
 |   docker-compose.yml
-|   TREE.md
+|   README.md
 |   
 +---docker-backend
 |   |   .env
