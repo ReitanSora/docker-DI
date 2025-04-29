@@ -1,7 +1,9 @@
 
-Folder PATH listing
-Volume serial number is 0CB9-9D07
-C:.
+## Project structure
+
+docker-CI
+```bash
+.
 |   .env
 |   docker-compose.yml
 |   TREE.md
