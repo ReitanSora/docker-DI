@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const res = await fetch('http://127.0.0.1:5000/users')
+        const res = await fetch('http://127.0.0.1:5001/users')
         const response = await res.json();
         setUsers(response);
       } catch (error) {

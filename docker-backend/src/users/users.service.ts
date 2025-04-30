@@ -16,18 +16,6 @@ export class UsersService {
     });
   }
 
-  async findAll() {
-    return await prisma.users.findMany();
-  }
-
-  async findOne(id: string) {
-    return await prisma.users.findFirst({
-      where: {
-        id: parseInt(id),
-      },
-    });
-  }
-
   async update(id: string, car: UpdateUserDto) {
     return await prisma.users.update({
       where: {

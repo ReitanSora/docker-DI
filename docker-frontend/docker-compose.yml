@@ -1,8 +1,6 @@
 services:
   docker-frontend:
-    build:
-      context: ./
-      dockerfile: Dockerfile
+    image: reitansora/docker-frontend:latest
     ports:
       - "5173:5173"
     networks:
