@@ -1,9 +1,11 @@
 services:
   docker-frontend:
-    image: reitansora/docker-frontend:latest
-    # build:
-    #   context: ./
-    #   dockerfile: Dockerfile
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      - VITE_TUNNEL_BASE_URL=${VITE_TUNNEL_BASE_URL}
+      - VITE_LOCAL_BASE_URL=${VITE_LOCAL_BASE_URL}
     ports:
       - "5173:5173"
     networks:

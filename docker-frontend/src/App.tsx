@@ -11,7 +11,8 @@ interface UserProps {
 function App() {
   const [users, setUsers] = useState<[]>();
   const tunnelBaseUrl = import.meta.env.VITE_TUNNEL_BASE_URL;
-  const localBaseUrl = import.meta.env.VITE_LOCAL_BASE_URL;
+  const hostIP = window.location.hostname
+  // const localBaseUrl = import.meta.env.VITE_LOCAL_BASE_URL;
 
   useEffect(() => {
     const getUsers = async () => {
@@ -21,7 +22,7 @@ function App() {
         setUsers(response);
       } catch {
         try {
-          const res = await fetch(`http://${localBaseUrl}:5001/users`)
+          const res = await fetch(`http://${hostIP}:5001/users`)
           const response = await res.json();
           setUsers(response);
         } catch (error) {
@@ -31,7 +32,7 @@ function App() {
     }
 
     getUsers();
-  }, [tunnelBaseUrl])
+  }, [hostIP, tunnelBaseUrl])
 
   return (
     <>
