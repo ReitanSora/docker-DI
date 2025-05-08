@@ -10,6 +10,7 @@ interface UserProps {
 
 function App() {
   const [users, setUsers] = useState<[]>();
+  const [ip, setIp] = useState();
   const tunnelBaseUrl = import.meta.env.VITE_TUNNEL_BASE_URL;
   const hostIP = window.location.hostname
   // const localBaseUrl = import.meta.env.VITE_LOCAL_BASE_URL;
@@ -19,11 +20,13 @@ function App() {
       try {
         const res = await fetch(`${tunnelBaseUrl}/users`)
         const response = await res.json();
+        setIp(response.ip)
         setUsers(response);
       } catch {
         try {
           const res = await fetch(`http://${hostIP}:5001/users`)
           const response = await res.json();
+          setIp(response.ip)
           setUsers(response);
         } catch (error) {
           console.log(error)
@@ -46,6 +49,8 @@ function App() {
       </div>
       <h2>Vite + React</h2>
       <h2>Practica Docker</h2>
+      <h2>Ip privada: {hostIP}</h2>
+      {ip && <h2>Ip pública: {ip}</h2>}
       <div className="card">
         <div>
           <p>Usuarios registrados:</p>
